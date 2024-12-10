@@ -1,0 +1,928 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    background: url("../img/perfil.jpg") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+h2 {
+    color: #4a90e2;
+}
+
+/*Estilos para el loader*/
+.loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: #4a90e2;
+    gap: 0.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.loading-bar {
+    width: 0.8rem;
+    height: 1.5rem;
+    background: #ffffff;
+    border-radius: 0.5rem;
+    animation: loadingAnimation 0.8s ease-in-out infinite;
+}
+
+.loading-bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.loading-bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.loading-bar:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.loading-bar:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.loading-bar:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.5);
+    }
+}
+
+/*Estilos para el modal*/
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-head>button {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.modal-head>button:hover {
+    background-color: #357ab8;
+}
+
+/*Salidas*/
+.hidden {
+    display: none !important;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/*Estilos para el menu bar*/
+.menu-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.8rem;
+    background-color: #4a90e2;
+    border-radius: 0.9rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 40rem;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+}
+
+.menu-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem;
+    background-color: #fff;
+}
+
+.menu-button {
+    background-color: #ffff;
+    color: #4a90e2;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-weight: bold;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #357ab8;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.menu-button:active {
+    transform: scale(0.95);
+}
+
+/*Estilos para el formulario de inicio de sesión*/
+.login-container {
+    background: #ffffff;
+    border-radius: 0.9rem;
+    padding: 1.2rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 20rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form label {
+    display: block;
+    margin-top: 0.8rem;
+    color: #4a90e2;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.4rem;
+}
+
+.login-form button {
+    width: 100%;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+    margin-top: 1.2rem;
+}
+
+.login-form button:hover {
+    background-color: #357ab8;
+}
+
+/*Estilos para el registro de tareas*/
+.modal-content {
+    background: #ffffff;
+    border-radius: 0.8rem;
+    padding: 1.2rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 40rem;
+    margin-bottom: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.item-task-1 {
+    width: 50%;
+}
+
+.task-form label {
+    display: block;
+    margin-top: 0.8rem;
+    color: #4a90e2;
+}
+
+.task-form input,
+.task-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.4rem;
+}
+
+.task-form button {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.task-form button:hover {
+    background-color: #357ab8;
+}
+
+
+.task-update label {
+    display: block;
+    margin-top: 0.8rem;
+    color: #4a90e2;
+}
+
+.task-update input,
+.task-update textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.4rem;
+}
+
+.task-update button {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+
+.task-com button:hover {
+    background-color: #357ab8;
+}
+
+.task-com label {
+    display: block;
+    margin-top: 0.8rem;
+    color: #4a90e2;
+}
+
+.task-com input,
+.task-com textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.4rem;
+}
+
+.task-com button {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.task-com button:hover {
+    background-color: #357ab8;
+}
+
+
+
+/*Estilos para el listado de las tareas*/
+.task-comentario {
+    background-color: #fff;
+    border-radius: 0.8rem;
+    padding: 1.2rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 35rem;
+    margin-left: auto;
+    margin-right: 15px;
+    margin-top: -300px;
+}
+
+.comet {
+    display: flex; /* Usamos flexbox para alinear los elementos en la misma fila */
+    justify-content: space-between; /* Espaciado máximo entre los elementos (h2 y input) */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+
+/*Estilos para el listado de las tareas*/
+.task-list-container {
+    background-color: #fff;
+    border-radius: 0.8rem;
+    padding: 1.2rem;
+    box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.1);
+    width: 40rem;
+}
+
+.header {
+    display: flex; /* Usamos flexbox para alinear los elementos en la misma fila */
+    justify-content: space-between; /* Espaciado máximo entre los elementos (h2 y input) */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.btn-lupa {
+    background-color: #7ad4e0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .btn-lupa:hover {
+    background-color: #6da5be;
+  }
+  
+  .fas.fa-search {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.2rem;
+}
+
+ul li {
+    background-color: #f0f4f8;
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.2rem 0.3rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.task-description,
+.task-date,
+.task-time {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 0.01rem;
+}
+
+.task-check {
+    display: flex;
+    align-items: center;
+}
+
+.task-check label {
+    margin-left: 0.3rem;
+    color: #4a90e2;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.task-check input[type="checkbox"]:checked+label {
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 10%;
+}
+
+.task-check input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.task-check input[type="checkbox"]:checked {
+    background-color: #4a90e2;
+    transform: scale(1.2);
+}
+
+/*Foot modal*/
+.modal-foot {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-cancel-modal {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #a4a7aa;
+    color: #fff;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-exit-modal {
+    margin-top: 1.2rem;
+    width: 100%;
+    background-color: #21bb61;
+    color: #fff;
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.alert-container {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    z-index: 9999;
+}
+
+.custom-alert {
+    min-width: 15rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: #fff;
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: custom-slide-in 0.5s ease-out forwards, custom-slide-out 0.5s ease-out forwards 3s;
+}
+
+.alert-success {
+    background-color: #2ecc71;
+}
+
+.alert-error {
+    background-color: #e74c3c;
+}
+
+.alert-info {
+    background-color: #3498db;
+}
+
+.alert-warning {
+    background-color: #f1c40f;
+}
+
+@keyframes custom-slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes custom-slide-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+}
+
+/*Estilo para el reloj*/
+.clock-widget {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.2rem;
+    background: #2ecc71;
+    color: #fff;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    text-align: center;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+
+.clock-widget:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 03);
+}
+
+#clock-time {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#clock-date {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.clock-face {
+    position: relative;
+    width: 10rem;
+    height: 10rem;
+    margin: 10px auto;
+    border: 0.02rem solid #bdc3c7;
+    border-radius: 50%;
+    background-color: #34495e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hand {
+    position: absolute;
+    width: 50%;
+    background: white;
+    transform-origin: 100%;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.hour-hand {
+    height: 0.4rem;
+    background: #e3f20a;
+    transform-origin: 0% 50%;
+    border-end-end-radius: 100%;
+    width: 4rem;
+}
+
+.minute-hand {
+    height: 0.3rem;
+    background: #ecf0f1;
+    transform-origin: 0% 50%;
+
+}
+
+.second-hand {
+    height: 0.2rem;
+    background: #e74c3c;
+    transform-origin: 0% 50%;
+
+}
+
+/*Estilo para el perfil*/
+.profile-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cover-photo {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    background-color: #3b5598;
+    background-image: url('../img/portada.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-section {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.profile-image {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 100%;
+    border: 0.2rem solid white;
+    overflow: hidden;
+    position: absolute;
+    top: -50%;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.user-bio {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #555;
+    padding: 0 1rem;
+}
+
+.user-joined {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+    font-style: oblique;
+}
+
+.user-info {
+    padding-top: 3rem;
+    text-align: center;
+}
+
+.foot-new-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 1rem;
+}
+.foot-new-user a{
+    text-decoration: none;
+    color: #3498db;
+}
+
+/** Estilos para los  botones de la tarea*/
+.task-check {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 150px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Estilo base para los botones */
+.btn-delete, .btn-edit {
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+/* Estilo para el botón "Eliminar" */
+.btn-delete {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;  /* Rojo más oscuro */
+}
+
+.btn-delete i {
+    margin-left: 5px;  /* Espacio entre el texto y el icono */
+}
+
+/* Estilo para el botón "Actualizar" */
+.btn-edit {
+    background-color: #3498db;  /* Azul */
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #2980b9;  /* Azul más oscuro */
+}
+
+.btn-edit i {
+    margin-left: 5px;  /* Espacio entre el texto y el icono */
+}
+/*Estilo para el ojito*/
+    .btn-view {
+        background-color: #f9fbfc;  /* Azul */
+        color: rgb(36, 160, 133);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+    .btn-view:hover {
+        background-color: #25384b;  /* Azul más oscuro */
+    }
+
+    .btn-view i {
+        margin-left: 1px;  /* Espacio entre el texto y el icono */
+    }
+
+
+/* Estilo para el checkbox */
+.task-done {
+    width: 20px;  /* Tamaño del checkbox */
+    height: 20px;  /* Tamaño del checkbox */
+}
+
+/* Estilo para la etiqueta del checkbox */
+label {
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+label:hover {
+    color: #3498db;
+}
+
+/* Estilo de los íconos */
+.fas {
+    font-size: 16px;
+}
+ /*Estilo par la barra de porcentaje*/
+
+
+.modal.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animación para el modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Cabecera del modal */
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-head h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.btn-close-modal {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.btn-close-modal i {
+    pointer-events: none;
+}
+
+/* Formulario de la tarea */
+.task-por {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Contenedor de la barra de progreso */
+.task-progress-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Barra de progreso */
+.task-progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    height: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task-progress {
+    height: 100%;
+    background-color: #4caf50; /* Color verde por defecto */
+    border-radius: 25px;
+    width: 0%; /* Inicialmente 0% */
+    transition: width 0.5s ease-in-out;
+}
+
+/* Texto del porcentaje */
+#percentageText {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo del botón */
+.button-container {
+    text-align: center; /* Centra el botón horizontalmente */
+    margin-top: 20px;   /* Opcional, para dar espacio en la parte superior */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+/* Style the label */
+#nota {
+    font-weight: bold; /* Make the label text bold */
+  }
+  
+  /* Style the input field */
+  #nota {
+    padding: 10px; /* Add padding for better readability */
+    border-radius: 5px;
+    width: 150px; /* Adjust the width as needed */
+  }
+
+
+
+
+
+
+
