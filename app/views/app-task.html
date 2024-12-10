@@ -10,16 +10,7 @@
 </head>
 
 <body>
-    <!--Elmento de reloj-->
-    <div class="clock-widget" id="clock-widget">
-        <div class="clock-face">
-            <div class="hand hour-hand"></div>
-            <div class="hand minute-hand"></div>
-            <div class="hand second-hand"></div>
-        </div>
-        <span id="clock-time"></span>
-        <span id="clock-date"></span>
-    </div>
+
     <!--Elemento de alertas-->
     <div class="alert-container">
     </div>
@@ -90,22 +81,24 @@
                 </button>
             </div>
             <form class="task-update" id="task-update">
+                <input type="hidden" id="task-id-upd" name="task-id-upd">
                 <div class="form-group-task">
                     <div class="item-task-1">
                         <label for="task-title">Titulo</label>
-                        <input type="text" id="task-title" name="task-title" required placeholder="Titulo de la tarea">
+                        <input type="text" id="task-title-upd" name="task-title-upd" required
+                            placeholder="Titulo de la tarea">
                     </div>
                     <div>
                         <label for="task-date">Fecha</label>
-                        <input type="date" id="task-date" name="task-date" required>
+                        <input type="date" id="task-date-upd" name="task-date-upd" required>
                     </div>
                     <div>
                         <label for="task-time">Hora</label>
-                        <input type="time" name="task-time" id="task-time" required>
+                        <input type="time" name="task-time-upd" id="task-time-upd" required>
                     </div>
                 </div>
                 <label for="task-description">Descripcion</label>
-                <textarea id="task-description" name="task-description" required
+                <textarea id="task-description-upd" name="task-description-upd" required
                     placeholder="Descripcion de la tarea"></textarea>
                 <button type="submit">Actualizar Tarea</button>
             </form>
@@ -115,24 +108,24 @@
 
     <!--Modal de actualizar tareas-->
     <div class="modal hidden modal-com-task">
-            <!--Inicio de registro de tareas-->
-            <div class="modal-content">
-                <div class="modal-head">
-                    <h2>Agregar Comentario</h2>
-                    <button class="btn-close-modal">
-                        <i class="fas fa-close"></i>
-                    </button>
-                </div>
-                <form class="task-com" id="task-com">
-                    <div class="form-group-task">
-                    </div>
-                    <label for="task-description">Descripcion</label>
-                    <textarea id="task-description" name="task-description" required
-                        placeholder="Descripcion de la tarea"></textarea>
-                    <button type="submit">Agregar</button>
-                </form>
+        <!--Inicio de registro de tareas-->
+        <div class="modal-content">
+            <div class="modal-head">
+                <h2>Agregar Comentario</h2>
+                <button class="btn-close-modal">
+                    <i class="fas fa-close"></i>
+                </button>
             </div>
-            <!--Fin de registro de tareas-->
+            <form class="task-com" id="task-com">
+                <div class="form-group-task">
+                </div>
+                <label for="task-description">Descripcion</label>
+                <textarea id="task-description" name="task-description" required
+                    placeholder="Descripcion de la tarea"></textarea>
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+        <!--Fin de registro de tareas-->
     </div>
 
 
@@ -148,18 +141,19 @@
             </div>
             <form class="task-por" id="task-por">
                 <label for="nota" id="nota">Nota:</label>
-                    <input type="text" id="nota" name="nota" required placeholder="Nota">
+                <input type="text" id="nota" name="nota" required placeholder="Nota">
                 <div class="task-progress-container">
                     <div class="task-progress-bar">
                         <div class="task-progress" id="progressBar"></div>
-                    </div><p id="percentageText">0%</p>
+                    </div>
+                    <p id="percentageText">0%</p>
                     <div class="button-container">
                         <button type="submit">Guardar</button>
-                    </div>           
+                    </div>
                 </div>
-                </div>
-                
-            </form>
+        </div>
+
+        </form>
     </div>
     <!--Fin de registro de tareas-->
     </div>
@@ -216,30 +210,16 @@
     <div class="task-list-container">
         <div class="header">
             <h2>Lista de Tareas</h2>
-            <form  id="task-buscar" class="task-buscar">
+            <form id="task-buscar" class="task-buscar">
                 <input type="date" id="fecha" name="fecha" placeholder="Ingrese la fecha">
                 <button type="submit" class="btn-lupa">
                     <i class="fas fa-search"></i>
-                  </button>
-              </form>  
+                </button>
+            </form>
         </div>
         <ul id="task-list" class="task-list">
-            <!-- Aquí se agregarán las tareas -->            
-        </ul>    
-    </div>
-
-    <div class="task-comentario">
-        <div class="comet">
-            <h2>Comentarios</h2>
-            <form  id="task-buscar" class="task-buscar">
-
-            </form>
-              <button class="menu-button" id="btn-comen">
-                <i class="fas fa-plus"></i>
-        </div>
-        <ul id="task-com" class="task-com">
-
-        </ul>    
+            <!-- Aquí se agregarán las tareas -->
+        </ul>
     </div>
 
     <!--Fin de listado de tareas-->

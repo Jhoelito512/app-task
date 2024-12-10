@@ -6,9 +6,9 @@ class TaskController extends Task
     {
         parent::__construct();
     }
-/**
-* funcion que registrar una tareas
-*/
+    /**
+     * funcion que registrar una tareas
+     */
     public function setTask($title, $description, $date, $hour)
     {
         session_start($this->nameSesion());
@@ -45,9 +45,9 @@ class TaskController extends Task
         );
         die();
     }
-/**
-* Funcion que obtiene las tareas
-*/
+    /**
+     * Funcion que obtiene las tareas
+     */
     public function getTasks()
     {
         session_start($this->nameSesion());
@@ -65,6 +65,7 @@ class TaskController extends Task
         }
         echo $this->toJson(
             [
+                'data' => $response,
                 'status' => false,
                 'message' => "Ocurrio un error y no logro obtener las tareas",
                 'type' => 'error'
@@ -72,9 +73,9 @@ class TaskController extends Task
         );
         die();
     }
-/**
-* Funcion para actualizar el estado de la tarea
-*/
+    /**
+     * Funcion para actualizar el estado de la tarea
+     */
     public function updateStatusTask($id, $status)
     {
         if ($id == "" || $status == "") {
@@ -107,10 +108,11 @@ class TaskController extends Task
             ]
         );
     }
-/*
-* Funcion eliminar tarea
-*/
-    public function deleteTasks($id) {
+    /*
+     * Funcion eliminar tarea
+     */
+    public function deleteTasks($id)
+    {
         if ($id == "") {
             echo $this->toJson(
                 [
@@ -133,10 +135,10 @@ class TaskController extends Task
             die();
         }
     }
-/*
-* funcion para actualizar la tarea
-*/
-    public function upTask($title,  $description,  $date,  $hour)
+    /*
+     * funcion para actualizar la tarea
+     */
+    public function upTask($title, $description, $date, $hour)
     {
         session_start($this->nameSesion());
         //llenado de variables
@@ -152,29 +154,29 @@ class TaskController extends Task
             );
             die();
         }
-            $request = $this->updateTask($idUser, $title, $description, $status ,$date, $hour);
-            if ($request ) {
-                echo $this->toJson(
-                    [
-                        'status' => true,
-                        'message' => "Tarea actualizada correctamente",
-                        'type' => 'success'
-                    ]
-                );
-                die();
-            }
+        $request = $this->updateTask($idUser, $title, $description, $status, $date, $hour);
+        if ($request) {
             echo $this->toJson(
                 [
-                    'status' => false,
-                    'message' => "Ocurrio un error y no logro actualizar la tarea",
-                    'type' => 'error'
+                    'status' => true,
+                    'message' => "Tarea actualizada correctamente",
+                    'type' => 'success'
                 ]
             );
             die();
         }
-/*
-* funcion para buscar tareas con fecha
-*/
+        echo $this->toJson(
+            [
+                'status' => false,
+                'message' => "Ocurrio un error y no logro actualizar la tarea",
+                'type' => 'error'
+            ]
+        );
+        die();
+    }
+    /*
+     * funcion para buscar tareas con fecha
+     */
     public function buscarTask($id)
     {
         session_start($this->nameSesion());
@@ -199,9 +201,9 @@ class TaskController extends Task
         );
         die();
     }
-/**
-* funcion que registrar una Comentario
-*/
+    /**
+     * funcion que registrar una Comentario
+     */
     public function setCom($description)
     {
         session_start($this->nameSesion());
@@ -237,9 +239,9 @@ class TaskController extends Task
         );
         die();
     }
-/**
-* Funcion que obtiene las tareas
-*/
+    /**
+     * Funcion que obtiene las tareas
+     */
     public function getCom()
     {
         session_start($this->nameSesion());
